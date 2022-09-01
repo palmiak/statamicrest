@@ -1,4 +1,4 @@
-![image](https://user-images.githubusercontent.com/2342458/187889820-501f1bb7-986d-4e87-8191-0349827efe8d.png)
+[![How to connect headless Statamic with Astro](https://user-images.githubusercontent.com/2342458/187889820-501f1bb7-986d-4e87-8191-0349827efe8d.png)]([anchor link](https://buddy.works/guides/statamic-rest-api))
 
 # How to connect headless Statamic with Astro
 
