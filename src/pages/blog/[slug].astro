@@ -1,0 +1,59 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import {fetchAPI} from '../../api';
+
+export async function getStaticPaths() {
+  const posts = await fetchAPI( 'collections/blog/entries' );
+  return posts.data.map((post) => {
+    return {
+      params: { slug: post.slug },
+      props: { post } };
+  });
+}
+const {post} = Astro.props;
+---
+
+<html>
+	<head>
+		<BaseHead title={post.title} description={post.description} />
+		<style>
+			.title {
+				font-size: 2em;
+				margin: 0.25em 0 0;
+			}
+			hr {
+  				border-top: 1px solid #DDD;
+				margin: 1rem 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<Header />
+		<main>
+			<article>
+				{post.featured_image && (
+					<img
+						width={720}
+						height={360}
+						src={post.featured_image.permalink}
+						alt=""
+					/>
+				)}
+				<h1 class="title">{post.title}</h1>
+				{post.date && <time>{new Date(post.date).toLocaleDateString('en-us', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                })}</time>}
+				<hr/>
+				<div set:html={post.content}></div>
+
+                {(post.tags.lenght > 0) && <div>Tags: { post.tags.map( (tag) => tag.title ).join(', ') }</div>}
+			</article>
+		</main>
+		<Footer />
+	</body>
+</html>
