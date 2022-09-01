@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/2342458/187889820-501f1bb7-986d-4e87-8191-0349827efe8d.png)
+
 # How to connect headless Statamic with Astro
 
 This is a repository used in this [guide](https://buddy.works/guides/statamic-rest-api).
